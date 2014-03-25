@@ -199,15 +199,50 @@
 					<h1>Padrões <br/>Fundamentais</h1>
 				</section>
 
+                <section>
+                    <section>
+                            <h1>Channels <img src="img/ChannelsIcon.png" width="86" height="54"></h1>
+                            <p>
+                                <img src="img/channel_pattern.png" width="722" height="175">
+                            </p>
+                            <br/>
+                            <p>Padrão que detalha os canais onde a mensagem é recebida (in) ou enviada (out).</p>
+                    </section>
+                    <section>
+                        <h1>Ponto a Ponto</h1>
+                        <p>
+                            <img src="img/point-to-point-channel.png" height="200">
+                        </p>
+                        <br/>
+                        <p>Um canal ponto a ponto garante que apenas um consumidor recebe uma mensagem.</p>
+                    </section>
+                    <section>
+                        <h1>Publish-Subscribe</h1>
+                        <p>
+                            <img src="img/publish-subscribe-channel.png" height="200">
+                        </p>
+                        <br/>
+                        <p>Um canal de entrada que se divide em vários canais de saída, um para cada assinante.</p>
+                    </section>
+                    <section>
+                        <h1>Dead Letter Channel</h1>
+                        <p>
+                            <img src="img/deal-letter-channel.png" height="200">
+                        </p>
+                        <br/>
+                        <p>Quando um sistema determina que ele não pode ou não deve entregar uma mensagem, ele pode optar por mover a mensagem para um Dead Letter Channel.</p>
+                    </section>
+
+
+                </section>
+
 				<section>
-					<h1>Pipe and Filters <img src="img/PipesAndFiltersIcon.png"></h1>
+					<h1>Pipe and Filters <img src="img/PipesAndFiltersIcon.png" ></h1>
                     <p>
                         <img src="img/PipesAndFilters_pattern.gif" width="629" height="180">
                     </p>
                     <br/>
-                    <ul>
-                        <li>Consiste em dividir uma tarefa grande em várias tarefas menores conectadas por canais.</li>
-                    </ul>
+                    <p>Consiste em dividir uma tarefa grande em várias tarefas menores conectadas por canais.</p>
                     <br/><br/>
                     <pre><code data-trim contenteditable>
 from("direct:a")
@@ -218,51 +253,121 @@ from("direct:a")
 				</section>
 
                 <section>
-                    <h1>Message Router <img src="img/ContentBasedRouterIcon.gif"></h1>
-                    <p>
-                        <img src="img/MessageRouter.png" width="594" height="244">
-                    </p>
-                    <ul>
-                        <li>Roteador redireciona uma mensagem para outro canal baseado num conjunto de condições definidas.</li>
-                    </ul>
-                    <br/>
-                    <pre><code data-trim contenteditable>
-from("jms:inQueue")
-.choice()
-    .when(header("foo").isEqualTo("bar"))
-        .to("jms:outQueue1")
-    .otherwise()
-        .to("jms:outQueue2");</code></pre>
+                    <section>
+                        <h1>Message Router <img src="img/ContentBasedRouterIcon.gif"></h1>
+                        <p>
+                            <img src="img/MessageRouter.png" width="594" height="244">
+                        </p>
+                        <p>Roteador redireciona uma mensagem para outro canal tendo como base um conjunto de condições definidas.</p>
+                        <br/>
+                        <pre><code data-trim contenteditable>
+    from("jms:inQueue")
+    .choice()
+        .when(header("foo").isEqualTo("bar"))
+            .to("jms:outQueue1")
+        .otherwise()
+            .to("jms:outQueue2");</code></pre>
+                    </section>
+                    <section>
+                        <h1>Recipient List</h1>
+                        <p>
+                            <img src="img/RecipientListIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Rotea uma mensagem para uma lista (estática ou dinâmica) de destinatários.</p>
+                    </section>
+                    <section>
+                        <h1>Split</h1>
+                        <p>
+                            <img src="img/SplitterIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Quebra uma mensagem com múltiplos sub-elementos, e processa-os individualmente.</p>
+                    </section>
+                    <section>
+                        <h1>Aggregator</h1>
+                        <p>
+                            <img src="img/AggregatorIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Reune um conjunto de mensagens relacionadas numa única mensagem.</p>
+                    </section>
+                    <section>
+                        <h1>Message Filter</h1>
+                        <p>
+                            <img src="img/MessageFilterIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Filtra mensagens pelo seu conteúdo.</p>
+                    </section>
                 </section>
 
                 <section>
-                    <h1>Translator <img src="img/MessageTranslatorIcon.gif"></h1>
-                    <p>
-                        <img src="img/MessageTranslator.png" width="521" height="224">
-                    </p>
-                    <br/>
-                    <ul>
-                        <li>Transforma uma mensagem para outro formato.</li>
-                    </ul>
-                    <br/><br/>
-                    <pre><code data-trim contenteditable>
-from("direct:start").process(new Processor() {
-    public void process(Exchange exchange) {
-        Message in = exchange.getIn();
-                in.setBody(in.getBody(String.class).toUpperCase());
-    }
-}).to("mock:result");
-                    </code></pre>
+                    <section>
+                        <h1>Transformation <img src="img/MessageTranslatorIcon.gif"></h1>
+                        <p>
+                            <img src="img/MessageTranslator.png" width="521" height="224">
+                        </p>
+                        <br/>
+                        <p>Transforma uma mensagem para outro formato.</p>
+                        <br/><br/>
+                        <pre><code data-trim contenteditable>
+    from("direct:start").process(new Processor() {
+        public void process(Exchange exchange) {
+            Message in = exchange.getIn();
+                    in.setBody(in.getBody(String.class).toUpperCase());
+        }
+    }).to("mock:result");
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Content Enricher</h1>
+                        <p>
+                            <img src="img/DataEnricherIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Como posso acessar outro sistema para obter dados necessários e "enriquecer" uma mensagem?</p>
+                    </section>
+                    <section>
+                        <h1>Content Filter</h1>
+                        <p>
+                            <img src="img/ContentFilterIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Simplificar uma mensagem removendo itens desnecessários.</p>
+                    </section>
+                    <section>
+                        <h1>Normalizer</h1>
+                        <p>
+                            <img src="img/NormalizerIcon.gif" height="200">
+                        </p>
+                        <br/>
+                        <p>Como processar mensagens que são semanticamente equivalentes, mas chegam com formatos diferentes ?</p>
+                    </section>
+
+
                 </section>
 
                 <section>
-                    <h1>Endpoints  <img src="img/MessageEndpointIcon.gif"></h1>
-                    <p>
-                        <img src="img/MessageEndpoints.png">
-                    </p>
-                    <ul>
-                        <li>Ao usar o DSL para criar rotas você normalmente acessa os Endpoints através de URIs ao invés de usar diretamente a interface do Endpoint.</li>
-                    </ul>
+                    <section>
+                        <h1>Endpoints  <img src="img/MessageEndpointIcon.gif"></h1>
+                        <p>
+                            <img src="img/MessageEndpoints.png">
+                        </p>
+                        <p>Define como uma aplicação se conecta com um sistema externo (sem criar acoplamento) para enviar ou receber mensagens.</p>
+                    </section>
+                    <section>
+                        <h1>Adapters</h1>
+                        <ul>
+                            <li>JDBC</li>
+                            <li>FTP</li>
+                            <li>HTTP</li>
+                            <li>WEB SERVICE</li>
+                            <li>EMAIL</li>
+                            <li>XMPP</li>
+                            <li>...</li>
+                        </ul>
+                    </section>
                 </section>
 
 				<section>
