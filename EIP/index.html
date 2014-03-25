@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Padrões de Integraçao</title>
+
+		<meta name="description" content="Padrões de Integração">
+		<meta name="author" content="Paulo Neves">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1><span style=" color: yellow;">E</span>nterprise &nbsp;</h1>
+					<h1><span style=" color: yellow;">I</span>ntegration</h1>
+                    <h1><span style=" color: yellow;">P</span>atterns  &nbsp;&nbsp;&nbsp;&nbsp;</h1>
+                    <!--
+                    <h3>Ou</h3>
+                    <h2>Padrões de Integração em aplicações corporativas</h2>
+                    -->
+                    <br/>
+                    <br/>
+					<p>
+						<small> <a href="mailto:paulo.neves@afferolab.com.br">Paulo Neves</a> / <a href="http://twitter.com/pzneves">@pzneves</a></small>
+					</p>
+				</section>
+
+                <section>
+                    <h2>Padrões de Integração em Aplicações Corporativas</h2>
+                    <div class="left large_width" style="text-align:left">
+                        <p><strong>Título:</strong><small>Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions.</small></p>
+                        <p><strong>Autores:</strong><br/><small>Gregor Hohpe; Bobby Woolf</small></p>
+                        <p><small>Publicado em Outubro, 2003</small></p>
+                        <p>Descreve 65 padrões de integração com o objetivo de desenhar soluções integrações de qualidade.</p>
+                    </div>
+                    <div>
+                        <img src="img/eip_book.png">
+                    </div>
+                </section>
+
+				<section>
+                    <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                        &ldquo;Designar à uma equipe de programadores para criar uma solução de improviso personalizada amarrará você em uma cadeia interminável de surpresas,
+                        ajustes e correções trazendo riscos à lucratividade do seu negócio.&rdquo;
+                    </blockquote>
+
+				</section>
+
+				<!-- Example of nested vertical slides -->
+                <section>
+                    <h2>Porquê criar Padrões de Integração de Sistemas?</h2>
+
+                    <ul>
+                        <li class="fragment roll-in"><strong>Necessidade de <span style="color:red;">interoperabilidade</span> entre sistemas;</strong></li>
+                        <li class="fragment roll-in"><strong>A <span style="color:red;">criticidade</span> e os <span style="color:red;">riscos</span> são altos;</strong></li>
+                        <li class="fragment roll-in"><strong>Integrações mal desenhadas causam <span style="color:red;">problemas</span> ao longo dos anos;</strong></li>
+                        <li class="fragment roll-in"><strong>Solução errada => Manutenção <span style="color:red;">complexa</span>;</strong></li>
+                        <li class="fragment roll-in"><strong>Os padrões de integração são <span style="color:red;">soluções provadas</span> para problemas no contexto de integração;</strong></li>
+                    </ul>
+                </section>
+				<section>
+					<section>
+						<h2>Evolução da Integração</h2>
+						<p>
+							Soluções de integração utilizadas ao longo da história da computação.
+						</p>
+					</section>
+					<section>
+						<h2>Anos 70: Cobol Flat Files</h2>
+						<p>- Troca de arquivos através de ferramentas de processamento batch.</p>
+
+                        <br/>
+                        <div class="left medium_width box">
+                            <p style=" color: yellow;">Prós:</p>
+                            <ul>
+                                <li>Desacoplamento físico;</li>
+                                <li>Independência de linguagem ou sistema;</li>
+                            </ul>
+                        </div>
+                        <div class="left medium_width box">
+                            <p style=" color: yellow;">Contras:</p>
+                            <ul>
+                                <li>Transferência offline;</li>
+                                <li>Fora de sincronia;</li>
+                                <li>Volume grande dados;</li>
+                            </ul>
+                        </div>
+					</section>
+                    <section>
+                        <h2>Anos 80: Banco de dados Central</h2>
+                        <p>- Todas as aplicações acessam uma base de dados comum.</p>
+
+                        <br/>
+                        <div class="left medium_width box">
+                            <p style=" color: yellow;">Prós:</p>
+                            <ul>
+                                <li>Consistência de dados;</li>
+                                <li>Garantia de transacionalidade;</li>
+                                <br/>
+                            </ul>
+                        </div>
+                        <div class="left medium_width box">
+                            <p style=" color: yellow;">Contras:</p>
+                            <ul>
+                                <li>Integração apenas de dados;</li>
+                                <li>Dificuldade em encontrar uma representação comum para todos os sistemas;</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Anos 90: Remote Procedure Calls (RPC)</h2>
+                        <p style="text-align:left">- Uma aplicação executa métodos diretamente noutra aplicação.</p>
+
+
+                        <br/>
+                        <div class="left medium_width box">
+                            <p style=" color: yellow;">Prós:</p>
+                            <ul>
+                                <li>Troca de dados realtime;</li>
+                                <li>Integração de serviços de negócio;</li>
+                                <br/>
+                                <br/>
+                            </ul>
+                        </div>
+                        <div class="left medium_width box">
+                            <p style=" color: yellow;">Contras:</p>
+                            <ul>
+                                <li>Funciona bem apenas com número reduzido de sistemas;</li>
+                                <li>Alto acoplamento;</li>
+                                <li>Performance;</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Atualmente: Mensagens Assíncronas</h2>
+                        <p style="text-align:left">- Uma aplicação envia mensagens para serem processadas assincronamente.</p>
+
+
+                        <br/>
+                        <div class="box" style="text-align:left">
+                            <ul>
+                                <li>Aplicações separadas por um canal (desacoplamento físico);</li>
+                                <li>Canais assíncronos (desacoplamento temporal);</li>
+                                <li>Troca de dados através de mensagens;</li>
+                                <li>Tolerância a falhas de rede;</li>
+                                <li>Alta disponibilidade;</li>
+                            </ul>
+                        </div>
+
+                    </section>
+				</section>
+                <section>
+                    <h2>Estilos de Integração</h2>
+                    <p>
+                        <img src="img/estilos_integracao.jpg">
+                    </p>
+                </section>
+
+                <section>
+                    <h1>Conceitos básicos</h1>
+                    <p/><br/>
+                    <div style="text-align:left">
+                        <p><h4 style=" display: inline; color: yellow">Channels:</h4> Como transportar mensagens ?</p><p/>
+                        <p><h4 style=" display: inline; color: yellow">Messages:</h4> Como descrever (ou criar) mensagens?</p><p/>
+                        <p><h4 style=" display: inline; color: yellow">Pipe and Filters:</h4> Pipeline de execução das mensagens antes de serem entregues ao destinatários?</p>
+                        <p><h4 style=" display: inline; color: yellow">Routing:</h4> Como rotear mensagens para o destinatário?</p>
+                        <p><h4 style=" display: inline; color: yellow">Transformation:</h4> Como transformar uma mensagem num formato exigido?</p>
+                        <p><h4 style=" display: inline; color: yellow">Endpoints:</h4> Como uma aplicação deve-se conectar com um canal para enviar ou receber mensagens?</p>
+                    </div>
+                </section>
+
+				<section>
+					<h1>Padrões <br/>Fundamentais</h1>
+				</section>
+
+				<section>
+					<h1>Pipe and Filters <img src="img/PipesAndFiltersIcon.png"></h1>
+                    <p>
+                        <img src="img/PipesAndFilters_pattern.gif" width="629" height="180">
+                    </p>
+                    <br/>
+                    <ul>
+                        <li>Consiste em dividir uma tarefa grande em várias tarefas menores conectadas por canais.</li>
+                    </ul>
+                    <br/><br/>
+                    <pre><code data-trim contenteditable>
+from("direct:a")
+.bean("decrypt")
+.bean("authenticate")
+.bean("dedup")
+.to("mock:result");</code></pre>
+				</section>
+
+                <section>
+                    <h1>Message Router <img src="img/ContentBasedRouterIcon.gif"></h1>
+                    <p>
+                        <img src="img/MessageRouter.png" width="594" height="244">
+                    </p>
+                    <ul>
+                        <li>Roteador redireciona uma mensagem para outro canal baseado num conjunto de condições definidas.</li>
+                    </ul>
+                    <br/>
+                    <pre><code data-trim contenteditable>
+from("jms:inQueue")
+.choice()
+    .when(header("foo").isEqualTo("bar"))
+        .to("jms:outQueue1")
+    .otherwise()
+        .to("jms:outQueue2");</code></pre>
+                </section>
+
+                <section>
+                    <h1>Translator <img src="img/MessageTranslatorIcon.gif"></h1>
+                    <p>
+                        <img src="img/MessageTranslator.png" width="521" height="224">
+                    </p>
+                    <br/>
+                    <ul>
+                        <li>Transforma uma mensagem para outro formato.</li>
+                    </ul>
+                    <br/><br/>
+                    <pre><code data-trim contenteditable>
+from("direct:start").process(new Processor() {
+    public void process(Exchange exchange) {
+        Message in = exchange.getIn();
+                in.setBody(in.getBody(String.class).toUpperCase());
+    }
+}).to("mock:result");
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h1>Endpoints  <img src="img/MessageEndpointIcon.gif"></h1>
+                    <p>
+                        <img src="img/MessageEndpoints.png">
+                    </p>
+                    <ul>
+                        <li>Ao usar o DSL para criar rotas você normalmente acessa os Endpoints através de URIs ao invés de usar diretamente a interface do Endpoint.</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h2>Catálogo de Padrões</h2>
+                    <p>
+                        <img src="img/catalogo.png" width="780" height="564">
+                    </p>
+
+				</section>
+
+                <section>
+                    <h2 class="left">Quando o seu<br/> problema for de Integração de Sistemas, sempre use os padrões de integração</h2>
+                    <p>
+                        <img src="img/bicicleta_roda_quadrada.jpg" width="400" height="448">
+                    </p>
+
+                </section>
+
+				<section>
+					<h1>FIM</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
