@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -37,9 +37,9 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1><span style=" color: yellow;">E</span>nterprise &nbsp;</h1>
-					<h1><span style=" color: yellow;">I</span>ntegration</h1>
-                    <h1><span style=" color: yellow;">P</span>atterns  &nbsp;&nbsp;&nbsp;&nbsp;</h1>
+					<h1><span style=" color: green;">E</span>nterprise &nbsp;</h1>
+					<h1><span style=" color: green;">I</span>ntegration</h1>
+                    <h1><span style=" color: green;">P</span>atterns  &nbsp;&nbsp;&nbsp;&nbsp;</h1>
                     <!--
                     <h3>Ou</h3>
                     <h2>Padrões de Integração em aplicações corporativas</h2>
@@ -76,16 +76,7 @@
 				</section>
 
 				<!-- Example of nested vertical slides -->
-                <section>
-                    <h2>Porquê criar Padrões de Integração de Sistemas?</h2>
 
-                    <ul>
-                        <li class="fragment roll-in"><strong>Necessidade de <span style="color:red;">interoperabilidade</span> entre sistemas;</strong></li>
-                        <li class="fragment roll-in"><strong>Integrações mal desenhadas causam <span style="color:red;">problemas</span> ao longo dos anos;</strong></li>
-                        <li class="fragment roll-in"><strong>Solução errada => Manutenção <span style="color:red;">complexa</span>;</strong></li>
-                        <li class="fragment roll-in"><strong>Os padrões de integração são <span style="color:red;">soluções provadas</span> para problemas no contexto de integração;</strong></li>
-                    </ul>
-                </section>
 				<section>
 					<section>
 						<h2>Evolução da Integração</h2>
@@ -99,14 +90,14 @@
 
                         <br/>
                         <div class="left medium_width box">
-                            <p style=" color: yellow;">Prós:</p>
+                            <p style=" color: green;">Prós:</p>
                             <ul>
                                 <li>Desacoplamento físico;</li>
                                 <li>Independência de linguagem ou sistema;</li>
                             </ul>
                         </div>
                         <div class="left medium_width box">
-                            <p style=" color: yellow;">Contras:</p>
+                            <p style=" color: green;">Contras:</p>
                             <ul>
                                 <li>Transferência offline;</li>
                                 <li>Fora de sincronia;</li>
@@ -120,7 +111,7 @@
 
                         <br/>
                         <div class="left medium_width box">
-                            <p style=" color: yellow;">Prós:</p>
+                            <p style=" color: green;">Prós:</p>
                             <ul>
                                 <li>Consistência de dados;</li>
                                 <li>Garantia de transacionalidade;</li>
@@ -128,7 +119,7 @@
                             </ul>
                         </div>
                         <div class="left medium_width box">
-                            <p style=" color: yellow;">Contras:</p>
+                            <p style=" color: green;">Contras:</p>
                             <ul>
                                 <li>Integração apenas de dados;</li>
                                 <li>Dificuldade em encontrar uma representação comum para todos os sistemas;</li>
@@ -142,7 +133,7 @@
 
                         <br/>
                         <div class="left medium_width box">
-                            <p style=" color: yellow;">Prós:</p>
+                            <p style=" color: green;">Prós:</p>
                             <ul>
                                 <li>Troca de dados realtime;</li>
                                 <li>Integração de serviços de negócio;</li>
@@ -151,7 +142,7 @@
                             </ul>
                         </div>
                         <div class="left medium_width box">
-                            <p style=" color: yellow;">Contras:</p>
+                            <p style=" color: green;">Contras:</p>
                             <ul>
                                 <li>Funciona bem apenas com número reduzido de sistemas;</li>
                                 <li>Alto acoplamento;</li>
@@ -185,21 +176,44 @@
                 </section>
 
                 <section>
+                    <h2>Porquê criar Padrões de Integração de Sistemas?</h2>
+
+                    <ul>
+                        <li class="fragment roll-in"><strong>Necessidade de <span style="color:red;">interoperabilidade</span> entre sistemas;</strong></li>
+                        <li class="fragment roll-in"><strong>Integrações mal desenhadas causam <span style="color:red;">problemas</span> ao longo dos anos;</strong></li>
+                        <li class="fragment roll-in"><strong>Solução errada => Manutenção <span style="color:red;">complexa</span>;</strong></li>
+                        <li class="fragment roll-in"><strong>Os padrões de integração são <span style="color:red;">soluções provadas</span> para problemas no contexto de integração;</strong></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Desafios da Integração</h2>
+
+                    <ul>
+                        <li class="fragment roll-in"><strong>As redes não são confiáveis;</strong></li>
+                        <li class="fragment roll-in"><strong>A rede são lentas;</strong></li>
+                        <li class="fragment roll-in"><strong>Quaisquer duas aplicações são diferentes;</strong></li>
+                        <li class="fragment roll-in"><strong>Alterações são inevitáveis;</strong></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>Padrões <br/>Fundamentais</h1>
+                </section>
+
+                <section>
                     <h1>Conceitos básicos</h1>
                     <p/><br/>
                     <div style="text-align:left">
-                        <p><h4 style=" display: inline; color: yellow">Channels:</h4> Como transportar mensagens ?</p><p/>
-                        <p><h4 style=" display: inline; color: yellow">Messages:</h4> Como descrever (ou criar) mensagens?</p><p/>
-                        <p><h4 style=" display: inline; color: yellow">Pipe and Filters:</h4> Pipeline de execução das mensagens antes de serem entregues ao destinatários?</p>
-                        <p><h4 style=" display: inline; color: yellow">Routing:</h4> Como rotear mensagens para o destinatário?</p>
-                        <p><h4 style=" display: inline; color: yellow">Transformation:</h4> Como transformar uma mensagem num formato exigido?</p>
-                        <p><h4 style=" display: inline; color: yellow">Endpoints:</h4> Como uma aplicação deve-se conectar com um canal para enviar ou receber mensagens?</p>
+                        <p><h4 style=" display: inline; color: green">Channels:</h4> Como transportar mensagens ?</p><p/>
+                        <p><h4 style=" display: inline; color: green">Messages:</h4> Como descrever (ou criar) mensagens?</p><p/>
+                        <p><h4 style=" display: inline; color: green">Pipe and Filters:</h4> Pipeline de execução das mensagens antes de serem entregues ao destinatários?</p>
+                        <p><h4 style=" display: inline; color: green">Routing:</h4> Como rotear mensagens para o destinatário?</p>
+                        <p><h4 style=" display: inline; color: green">Transformation:</h4> Como transformar uma mensagem num formato exigido?</p>
+                        <p><h4 style=" display: inline; color: green">Endpoints:</h4> Como uma aplicação deve-se conectar com um canal para enviar ou receber mensagens?</p>
                     </div>
                 </section>
 
-				<section>
-					<h1>Padrões <br/>Fundamentais</h1>
-				</section>
+
 
                 <section>
                     <section>

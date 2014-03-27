@@ -26,6 +26,31 @@ body {
   background: rgba(0, 0, 0, 0.99);
   text-shadow: none; }
 
+
+.left {
+    float:left;
+    width:475px;
+    padding-left: 50px;
+}
+
+.medium_width {
+    width:475px;
+}
+
+.large_width {
+    width:550px;
+}
+
+.box {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+p.clear
+{
+    clear:both;
+}
+
 /*********************************************
  * HEADERS
  *********************************************/
