@@ -1,0 +1,17 @@
+body {width:82%; margin:0 auto; clear:both; font:normal 87.5% arial;}
+.container {width:48.5%; min-height:100px; float:left; padding:.5%; margin:1% 0 5%; outline:solid 1px #CCC; box-shadow:1px 1px 3px #CECECE;}
+.request {margin-right:1%;}
+.response {background:#EEE;}
+#content, #new-content {word-wrap: break-word; font:normal 87.5% arial; width:100%; outline:none; color:#555;}
+#content {resize:none; overflow:hidden; border:none; height:90px;}
+#new-content {float:left; min-height:90px; white-space:pre-wrap;}
+
+@media only screen and (max-width:900px), (max-width:600px) {
+	body {width:95%;}
+}
+
+@media only screen and (max-width:600px) {
+	body {width:100%;}
+	.container {float:none; width:90%; margin:3% auto 0; box-shadow:0px 2px 3px #CECECE;}
+	#content, #new-content {height:90px !important; overflow-y:auto; float:none;}
+}
